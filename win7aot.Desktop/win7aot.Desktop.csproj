@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!--If you are willing to use Windows/MacOS native APIs you will need to create 3 projects.
+    One for Windows with net8.0-windows TFM, one for MacOS with net8.0-macos and one with net8.0 TFM for Linux.-->
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="VC-LTL" Version="5.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\win7aot\win7aot.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <WindowsSupportedOSPlatformVersion>5.1</WindowsSupportedOSPlatformVersion>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <TargetPlatformMinVersion>5.1</TargetPlatformMinVersion>
+  </PropertyGroup>
+</Project>
